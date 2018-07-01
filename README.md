@@ -2,7 +2,7 @@
 A tron clone, emulating the style of the mcp cone sector
 
 Screen elements are at top end GOAL section, a 10x barrier array which constantly
-shifts from left to right is just below, 
+shifts from left to right is just below that, with player core area at the bottom. 
 
 Multi-directional player starts at bottom of core, barrier initiallizes with 3x10 and
 grows to a maximum of 10x10, adding another row at shift 10 (+7), moves progressively
