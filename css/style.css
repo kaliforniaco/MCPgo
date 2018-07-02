@@ -3,8 +3,7 @@
 	margin: 0;
 	padding: 0;
 	border: 0;
-	grid-row-gap: 0;
-	border-bottom-width: 0;
+	
 }
 
 /* mobile */
@@ -16,25 +15,29 @@
 
 .container {
 	display: grid;
-	grid-template-columns: 1fr;
+	grid-template-columns: minmax(444px, 1fr);
 	grid-row-gap: 5px;
 }
 
 #instCol {
+	flex-flow: wrap;
 	background-color: red;
+	text-align: left;
 
 }
 
 #gameCol {
-	height: 500px;
+	height: auto;
 	background-color: blue;
 	border: 1px dotted black;
+	text-align: center;
 
 }
 
 #commCol {
 	background-color: black;
 	color: white;
+	text-align: right;
 
 }
 
@@ -54,7 +57,6 @@
 	display: inline-block;
 	background-color: blue;
 	
-	padding: 0 0 0 5px;
 
 }
 
@@ -64,9 +66,9 @@
 }
 /* Desktop */
 
-@media screen and (min-width: 450px) {
+@media screen and (min-width: 650px) {
 	.container {
-		grid-template-columns: 1fr 2fr 1fr;
+		grid-template-columns: minmax(10%, 1fr) minmax(max-content, 2fr) minmax(10%,1fr);
 	}
 
 	
