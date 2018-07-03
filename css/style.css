@@ -36,11 +36,20 @@
 }
 
 #commCol {
+	
 	background-color: black;
 	color: white;
 	text-align: right;
+	overflow-wrap: break-word;
+	word-break: break-all;
+}
+
+.comm-matrix  {
+	font-size: 5px;
+	flex-wrap: wrap-reverse;
 
 }
+
 
 .grid-square {
 	border: 0;

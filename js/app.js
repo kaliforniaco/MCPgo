@@ -2,7 +2,41 @@ console.log('C:/>');
 
 const flynn = {
 	lives: 3,
-	xCoordinate: 5
+	xCoordinate: 8, 
+	yCoordinate: 0,
+
+	hack(){
+		const newLogic = new Logic(this.xCoordinate);
+		newLogic.moveLogic();
+	},
+	moveLeft(){
+		if(this.xCoordinate > 0){
+			console.log("ROOM TO MOVE LEFT")
+			$(`.grid-square-${this.xCoordinate}-0`).removeClass('flynn');
+			this.xCoordinate -= 1;
+			$(`.grid-square-${this.xCoordinate}-0`).addClass('flynn')
+			$('.comm-matrix').append(`P.DIR-LT/`);
+		}
+	},
+	moveRight(){
+		if(this.xCoordinate < 15){
+			console.log("ROOM TO MOVE RIGHT")
+			$(`.grid-square-${this.xCoordinate}-0`).removeClass('flynn');
+			this.xCoordinate += 1;
+			$(`.grid-square-${this.xCoordinate}-0`).addClass('flynn')
+			$('.comm-matrix').append(`P.DIR-RT[]`);
+		}
+	},
+	moveUp(){
+		if(this.yCoordiante < 20){
+			console.log("ROOM TO MOVE UP")
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).removeClass('flynn');
+			this.yCoordinate += 1;
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('flynn');
+			$('.comm-matrix').append(`P.DIR-UP^`);
+		}
+	}
+
 }
 
 const coreGrid = [
@@ -42,16 +76,26 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 $('.grid-square-8-0').addClass('flynn');
 $(document).keydown(function(e){
 	let keyPressed = e.which;
+	$('.comm-matrix').append(`U${keyPressed}`);
 	console.log(keyPressed);
-/*
+
 	if(keyPressed == 37){
+		console.log("FLYNN LEFT");
 		flynn.moveLeft();
+	} else if(keyPressed == 38){
+		console.log("FLYNN UP");
+		//flynn.moveUp();
 	} else if(keyPressed == 39){
+		console.log("FLYNN RIGHT");
 		flynn.moveRight();
-	} else if(keyPressed == 32){
-		flynn.attack();
+	} else if(keyPressed == 40){
+		console.log("FLYNN DOWN");
+		//flynn.moveDown();
+	} else if(keyPressed == 90){
+		console.log("ACTION");
+		//flynn.attack();
 	
-	}*/
+	}
 })
 
 ;
