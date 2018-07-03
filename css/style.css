@@ -76,6 +76,10 @@
 	background-color: green;
 
 }
+
+.logic {
+	background-color: yellow;
+}
 /* Desktop */
 
 @media screen and (min-width: 650px) {

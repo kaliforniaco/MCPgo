@@ -1,12 +1,34 @@
 console.log('C:/>');
 
+class Logic {
+	constructor(logicColumn,logicRow){
+		console.log("post"+this.xCoordinate);
+		this.xCoordinate = logicColumn;
+		this.yCoordinate = logicRow;
+		console.log("Logic at " + this.yCoordinate)
+	}
+	moveLogic(){
+		if(this.yCoordinate == 20){
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate-1}`).removeClass('logic');
+		} else {
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('logic');
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate-1}`).removeClass('logic');
+			this.yCoordinate += 1;
+			//this.detectCollision();
+			setTimeout(()=>{
+				this.moveLogic();
+			}, 25)
+		}
+	}
+}
 const flynn = {
 	lives: 3,
 	xCoordinate: 8, 
 	yCoordinate: 0,
 
 	hack(){
-		const newLogic = new Logic(this.xCoordinate);
+		const newLogic = new Logic(this.xCoordinate,this.yCoordinate);
+		console.log("pre"+this.xCoordinate,this.yCoordinate);
 		newLogic.moveLogic();
 	},
 	moveLeft(){
@@ -102,7 +124,7 @@ $(document).keydown(function(e){
 		flynn.moveDown();
 	} else if(keyPressed == 90){
 		console.log("HACK");
-		//flynn.hack();
+		flynn.hack();
 	
 	}
 })
