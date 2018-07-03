@@ -42,11 +42,13 @@
 	text-align: right;
 	overflow-wrap: break-word;
 	word-break: break-all;
+
 }
 
 .comm-matrix  {
 	font-size: 5px;
 	flex-wrap: wrap-reverse;
+	/* FIND A WAY TO TRUNCATE OUTPUT IN MATRIX */
 
 }
 

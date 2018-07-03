@@ -12,28 +12,37 @@ const flynn = {
 	moveLeft(){
 		if(this.xCoordinate > 0){
 			console.log("ROOM TO MOVE LEFT")
-			$(`.grid-square-${this.xCoordinate}-0`).removeClass('flynn');
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).removeClass('flynn');
 			this.xCoordinate -= 1;
-			$(`.grid-square-${this.xCoordinate}-0`).addClass('flynn')
-			$('.comm-matrix').append(`P.DIR-LT/`);
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('flynn')
+			$('.comm-matrix').append(`T.DIR-LT/`);
 		}
 	},
 	moveRight(){
 		if(this.xCoordinate < 15){
 			console.log("ROOM TO MOVE RIGHT")
-			$(`.grid-square-${this.xCoordinate}-0`).removeClass('flynn');
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).removeClass('flynn');
 			this.xCoordinate += 1;
-			$(`.grid-square-${this.xCoordinate}-0`).addClass('flynn')
-			$('.comm-matrix').append(`P.DIR-RT[]`);
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('flynn')
+			$('.comm-matrix').append(`T.DIR-RT[]`);
 		}
 	},
 	moveUp(){
-		if(this.yCoordiante < 20){
-			console.log("ROOM TO MOVE UP")
+		if(this.yCoordinate < 19){
+			console.log("ROOM TO MOVE UP" )
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).removeClass('flynn');
 			this.yCoordinate += 1;
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('flynn');
-			$('.comm-matrix').append(`P.DIR-UP^`);
+			$('.comm-matrix').append(`T.DIR-UP ^`);
+		}
+	},
+	moveDown(){
+		if(this.yCoordinate > 0){
+			console.log("ROOM TO MOVE DOWN" )
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).removeClass('flynn');
+			this.yCoordinate -= 1;
+			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('flynn');
+			$('.comm-matrix').append(`T.DIR-DOWN v`);
 		}
 	}
 
@@ -80,20 +89,20 @@ $(document).keydown(function(e){
 	console.log(keyPressed);
 
 	if(keyPressed == 37){
-		console.log("FLYNN LEFT");
+		console.log("QUERY LEFT");
 		flynn.moveLeft();
 	} else if(keyPressed == 38){
-		console.log("FLYNN UP");
-		//flynn.moveUp();
+		console.log("QUERY UP");
+		flynn.moveUp();
 	} else if(keyPressed == 39){
-		console.log("FLYNN RIGHT");
+		console.log("QUERY RIGHT");
 		flynn.moveRight();
 	} else if(keyPressed == 40){
-		console.log("FLYNN DOWN");
-		//flynn.moveDown();
+		console.log("QUERY DOWN");
+		flynn.moveDown();
 	} else if(keyPressed == 90){
-		console.log("ACTION");
-		//flynn.attack();
+		console.log("HACK");
+		//flynn.hack();
 	
 	}
 })
