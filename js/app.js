@@ -38,6 +38,22 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 			$(`grid-square-${x}-${i}`).addClass('flynn');
 		}
 	}
-
 }
+$('.grid-square-8-0').addClass('flynn');
+$(document).keydown(function(e){
+	let keyPressed = e.which;
+	console.log(keyPressed);
+/*
+	if(keyPressed == 37){
+		flynn.moveLeft();
+	} else if(keyPressed == 39){
+		flynn.moveRight();
+	} else if(keyPressed == 32){
+		flynn.attack();
+	
+	}*/
+})
+
+;
+
 
