@@ -2,14 +2,15 @@ console.log('C:/>');
 
 class Logic {
 	constructor(logicColumn,logicRow){
-		console.log("post"+this.xCoordinate);
 		this.xCoordinate = logicColumn;
 		this.yCoordinate = logicRow;
-		console.log("Logic at " + this.yCoordinate)
+		$('.comm-matrix').append(`>`);
+
 	}
 	moveLogic(){
 		if(this.yCoordinate == 20){
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate-1}`).removeClass('logic');
+			$('.comm-matrix').append(`TERM-${this.xCoordinate}<`);
 		} else {
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('logic');
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate-1}`).removeClass('logic');
@@ -17,7 +18,7 @@ class Logic {
 			//this.detectCollision();
 			setTimeout(()=>{
 				this.moveLogic();
-			}, 25)
+			}, 30)
 		}
 	}
 }
@@ -28,7 +29,7 @@ const flynn = {
 
 	hack(){
 		const newLogic = new Logic(this.xCoordinate,this.yCoordinate);
-		console.log("pre"+this.xCoordinate,this.yCoordinate);
+		$('.comm-matrix').append(`LOG.${this.yCoordinate}`);
 		newLogic.moveLogic();
 	},
 	moveLeft(){
@@ -103,6 +104,8 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 			$(`grid-square-${x}-${i}`).addClass('flynn');
 		}
 	}
+
+	
 }
 $('.grid-square-8-0').addClass('flynn');
 $(document).keydown(function(e){
