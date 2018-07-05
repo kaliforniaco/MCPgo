@@ -107,13 +107,15 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 }
 
 // enemy/firewall
+let l=3
 let k=0
-for(let y=0; y<coreGrid.length; y++){
-	let col = coreGrid.length-k;
+for(let y=0; y<coreGrid.length-l; y++){
+	let col = coreGrid.length-(coreGrid.length-k);
 for(let j=coreGrid.length-1; j>= 0; j--){
 	let row = coreGrid.length-(coreGrid.length-j);
 	console.log(`You are at ROW ${row} COL ${col}`)
 }
+
 k++;
 }
 
