@@ -45,10 +45,9 @@
 
 }
 
-.comm-matrix  {
+.comm-matrix  { position: fixed;
 	font-size: 5px;
 	flex-wrap: wrap-reverse;
-	/* FIND A WAY TO TRUNCATE/SCROLL OUTPUT IN MATRIX */
 
 }
 
