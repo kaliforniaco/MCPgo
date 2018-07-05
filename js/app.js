@@ -94,7 +94,7 @@ const coreGrid = [
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
 ];
-
+// grid and player
 for(let i=coreGrid.length-1; i>= 0; i--){
 	let row = coreGrid[i];
 	$('.grid-wrapper').append(`<div class="grid-row-${i} grid-row"></div>`)
@@ -104,9 +104,21 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 			$(`grid-square-${x}-${i}`).addClass('flynn');
 		}
 	}
-
-	
 }
+
+// enemy/firewall
+let k=0
+for(let y=0; y<coreGrid.length; y++){
+	let col = coreGrid.length-k;
+for(let j=coreGrid.length-1; j>= 0; j--){
+	let row = coreGrid.length-(coreGrid.length-j);
+	console.log(`You are at ROW ${row} COL ${col}`)
+}
+k++;
+}
+
+
+
 $('.grid-square-8-0').addClass('flynn');
 $(document).keydown(function(e){
 	let keyPressed = e.which;
