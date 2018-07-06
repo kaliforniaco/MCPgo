@@ -107,18 +107,18 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 }
 
 // enemy/firewall
-let l=3
+for(let l=3; l<7; l++){
 let k=0
 for(let y=0; y<coreGrid.length-l; y++){
 	let col = coreGrid.length-(coreGrid.length-k);
-for(let j=coreGrid.length-1; j>= 0; j--){
+for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){
 	let row = coreGrid.length-(coreGrid.length-j);
 	console.log(`You are at ROW ${row} COL ${col}`)
 }
 
 k++;
 }
-
+}
 
 
 $('.grid-square-8-0').addClass('flynn');
