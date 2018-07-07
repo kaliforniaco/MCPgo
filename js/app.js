@@ -122,15 +122,22 @@ class Firewall {
 		this.row = 0;
 		this.col = 19;
 		this.blockId = 0;
-
-		let l=4;
-		for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){
-		this.col=j;	
-		$(`.grid-square-${this.row}-${this.col}`).addClass('block')
-		$(`.grid-square-${this.row}-${this.col}`).attr('block', this.blockId)
-	
-	}
-	}
+let k=0
+		for(let l=4; l<coreGrid.length; l++){
+			
+			for(let y=0; y<(coreGrid[y].length); y++){
+				this.row=y;
+				for(let j=coreGrid.length-1; j>= (coreGrid.length-l); j--){
+					this.col=j;	
+					$(`.grid-square-${this.row}-${this.col}`).addClass('block')
+					$(`.grid-square-${this.row}-${this.col}`).attr('block', this.blockId)
+	console.log(this.row,this.col, l, k, j, y);
+				}
+			
+			}
+			
+		}
+}
 }
 /*
 class Firewall {
@@ -155,8 +162,8 @@ class Firewall {
 					row = coreGrid.length-(coreGrid.length-j);
 					
 					
-					console.log(`You are at ROW ${row} COL ${col}`)
-					console.log(row, col, j,k,l);
+					//console.log(`You are at ROW ${row} COL ${col}`)
+					//console.log(row, col, j,k,l);
 				}
 
 				k++;
