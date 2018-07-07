@@ -121,10 +121,14 @@ class Firewall {
 	constructor(xCoordinate){
 		this.row = 0;
 		this.col = 19;
-		
-		for(let z=0;z<2;z++){
+		this.blockId = 0;
+
+		let l=4;
+		for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){
+		this.col=j;	
 		$(`.grid-square-${this.row}-${this.col}`).addClass('block')
-		this.row++;
+		$(`.grid-square-${this.row}-${this.col}`).attr('block', this.blockId)
+	
 	}
 	}
 }
@@ -146,11 +150,11 @@ class Firewall {
 			let k=0
 			for(let y=0; y<coreGrid.length-l; y++){
 				let col = coreGrid.length-(coreGrid.length-k);
-				$('.barrier-wrapper').append(`<div class="grid-row-${row} grid-row"></div>`)
-					for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){
+				
+				for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){	
 					row = coreGrid.length-(coreGrid.length-j);
 					
-					$(`.grid-square-${row}-${col}`).attr('block', this.blockId)
+					
 					console.log(`You are at ROW ${row} COL ${col}`)
 					console.log(row, col, j,k,l);
 				}
