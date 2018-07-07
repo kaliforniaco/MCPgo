@@ -51,13 +51,6 @@
 
 }
 
-.firewall {
-	width: 26px;
-	height: 36px;
-	background-color: red;
-	border: 1px solid yellow;
-	display: inline-block;
-}
 
 .grid-square {
 	border: 0;
@@ -74,7 +67,13 @@
 	font-size: 0;
 	display: inline-block;
 	background-color: blue;
-	
+
+}
+
+.barrier-wrapper {
+	font-size: 0;
+	display: inline-block;
+	background-color: grey;
 
 }
 
@@ -86,6 +85,12 @@
 .logic {
 	background-color: yellow;
 }
+
+.block {
+	background-color: red;
+	
+}
+
 /* Desktop */
 
 @media screen and (min-width: 650px) {

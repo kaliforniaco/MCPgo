@@ -71,6 +71,7 @@ const flynn = {
 
 }
 
+
 const coreGrid = [
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -101,26 +102,67 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 	for(let x=0;x<row.length;x++){
 		$(`.grid-row-${i}`).append(`<div class="grid-square grid-square-${x}-${i}"></div>`)
 		if(row[x]==flynn) {
-			$(`grid-square-${x}-${i}`).addClass('flynn');
+			$(`.grid-square-${x}-${i}`).addClass('flynn');
 		}
 	}
 }
 
+
+		
+		
+		
+
+/* NON-WORKING CODE FOR REVIEW!
 // enemy/firewall
-for(let l=3; l<7; l++){
-let k=0
-for(let y=0; y<coreGrid.length-l; y++){
-	let col = coreGrid.length-(coreGrid.length-k);
-for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){
-	let row = coreGrid.length-(coreGrid.length-j);
-	console.log(`You are at ROW ${row} COL ${col}`)
+const blocks = [];
+let blockNumber = 1;
+*/
+class Firewall {
+	constructor(xCoordinate){
+		this.row = 0;
+		this.col = 19;
+		
+		for(let z=0;z<2;z++){
+		$(`.grid-square-${this.row}-${this.col}`).addClass('block')
+		this.row++;
+	}
+	}
 }
+/*
+class Firewall {
+	constructor(row, col){
+		this.col = 20;
+		this.row = 0;
+		this.blockId = 0;
+		this.isDestroyed = false;
+		coreGrid[col][row] = this;
+		$(`.barrier-square-${row}-${col}`).addClass('block');
+		$(`.barrier-square-${row}-${col}`).attr('block', blockId);
+		blockId++;
+		blocks.push(this);
 
-k++;
+	*/	let row=19;
+		for(let l=3; l<4; l++){
+			let k=0
+			for(let y=0; y<coreGrid.length-l; y++){
+				let col = coreGrid.length-(coreGrid.length-k);
+				$('.barrier-wrapper').append(`<div class="grid-row-${row} grid-row"></div>`)
+					for(let j=coreGrid.length; j>= (coreGrid.length-l); j--){
+					row = coreGrid.length-(coreGrid.length-j);
+					
+					$(`.grid-square-${row}-${col}`).attr('block', this.blockId)
+					console.log(`You are at ROW ${row} COL ${col}`)
+					console.log(row, col, j,k,l);
+				}
+
+				k++;
+			}
+
+		}
+		/*
+	}
 }
-}
-
-
+*/
 $('.grid-square-8-0').addClass('flynn');
 $(document).keydown(function(e){
 	let keyPressed = e.which;
@@ -145,6 +187,16 @@ $(document).keydown(function(e){
 	
 	}
 })
+
+
+
+const wall = new Firewall(0);
+/* NWC
+const buildFirewall = setInterval(function(){
+	const newBlock = new Firewall();
+	newEnemy.move();
+}, 2000)
+*/
 
 ;
 
