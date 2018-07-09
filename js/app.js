@@ -15,13 +15,32 @@ class Logic {
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('logic');
 			$(`.grid-square-${this.xCoordinate}-${this.yCoordinate-1}`).removeClass('logic');
 			this.yCoordinate += 1;
-			//this.detectCollision();
+			this.detectCollision();
 			setTimeout(()=>{
 				this.moveLogic();
 			}, 30)
 		}
 	}
+detectCollision(){
+		const squareAboutToBeLasered = $(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`)
+		if(squareAboutToBeLasered.hasClass('block')){
+			squareAboutToBeLasered.removeClass('block');
+			squareAboutToBeLasered.addClass('explosion');
+			setTimeout(()=>{
+				squareAboutToBeLasered.removeClass('explosion');
+			}, 200)
+			blocks.forEach(function(block){
+				if(blocks.blockId == squareAboutToBeLasered.attr('block')){
+					console.log("DESTROYED ENEMY " + blocks.blockId);
+					squareAboutToBeLasered.removeAttr('block');
+					block.isDestroyed = true;
+				}
+				console.log('hit at ' +blocks.blockId+squareAboutToBeLasered);
+			})
+		}
+	}
 }
+
 const flynn = {
 	lives: 3,
 	xCoordinate: 8, 
@@ -117,21 +136,28 @@ for(let i=coreGrid.length-1; i>= 0; i--){
 const blocks = [];
 let blockNumber = 1;
 */
+const blocks = [];
+let blockId = 1;
 class Firewall {
 	constructor(xCoordinate){
-		this.row = 0;
-		this.col = 19;
+		this.row = this.xCoordinate;
+		this.col = this.yCoordinate;
 		this.blockId = 0;
+		this.isDestroyed = false;
+		
 let k=0
-		for(let l=4; l<coreGrid.length; l++){
+		for(let l=4; l<10; l++){
 			
 			for(let y=0; y<(coreGrid[y].length); y++){
-				this.row=y;
+				this.xCoordinate=y;
 				for(let j=coreGrid.length-1; j>= (coreGrid.length-l); j--){
-					this.col=j;	
-					$(`.grid-square-${this.row}-${this.col}`).addClass('block')
-					$(`.grid-square-${this.row}-${this.col}`).attr('block', this.blockId)
-	console.log(this.row,this.col, l, k, j, y);
+					this.yCoordinate=j;	
+					
+					$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).addClass('block')
+					$(`.grid-square-${this.xCoordinate}-${this.yCoordinate}`).attr('block', blockId)
+					blockId++;
+					blocks.push(`${this.xCoordinate},${this.yCoordinate}`);
+	console.log(this.row,this.col, l, k, j, y,this);
 				}
 			
 			}
@@ -139,6 +165,7 @@ let k=0
 		}
 }
 }
+
 /*
 class Firewall {
 	constructor(row, col){
